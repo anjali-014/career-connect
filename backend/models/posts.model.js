@@ -1,5 +1,7 @@
 import mongoose from "mongoose";
 
+// Post schema for linkedin clone
+
 const postSchema = new mongoose.Schema({
     userId : {
          
