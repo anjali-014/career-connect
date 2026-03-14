@@ -45,6 +45,10 @@ export const register = async (req, res) => {
 }
 
 
+
+// Login controller: verifies user credentials and generates authentication token
+
+
 export const login = async (req, res) => {
     try {
 
