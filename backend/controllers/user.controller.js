@@ -4,11 +4,14 @@ import crypto from "crypto";
 
 import bcrypt from "bcrypt";
 
-
+// Register controller: handles new user signup
 
 export const register = async (req, res) => {
     try{
+        // Extract user data from request body
         const {name, email, password, username} = req.body;
+
+        // Validate required fields
         if(!name || !email || !password || !username){
             return res.status(400).json({message: "All fields are required"});
         }
@@ -44,7 +47,7 @@ export const register = async (req, res) => {
     }
 }
 
-
+ 
 
 // Login controller: verifies user credentials and generates authentication token
 
