@@ -86,6 +86,8 @@ export const login = async (req, res) => {
 }
 
 
+//upload profile picture controller...
+
 export const uploadProfilePicture = async (req, res) => {
     const {token} = req.body;
 
