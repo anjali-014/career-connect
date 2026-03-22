@@ -147,7 +147,7 @@ export const updateUserProfile = async (req,res) => {
     }
 }
 
-//
+// get user and profile controller 
 
 export const getUserAndProfile = async (req,res) => {
     try{
