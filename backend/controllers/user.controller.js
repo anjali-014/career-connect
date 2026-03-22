@@ -110,6 +110,7 @@ export const uploadProfilePicture = async (req, res) => {
     }
 }
 
+//update user profile controller
 
 export const updateUserProfile = async (req,res) => {
 
@@ -146,7 +147,7 @@ export const updateUserProfile = async (req,res) => {
     }
 }
 
-
+//
 
 export const getUserAndProfile = async (req,res) => {
     try{
