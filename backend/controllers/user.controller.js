@@ -177,32 +177,50 @@ export const getUserAndProfile = async (req,res) => {
 // implement user profile data controller
 
 export const updateProfileData = async (req, res) => {
-    
-    try{
-
+    try {
         const { token, ...newUserdata } = req.body;
 
-        const userprofile = await User.findOne({ token : token });
+        const user = await User.findOne({ token });
 
-        if(!user){
-             return res.status(404).json({ message : "User not found"})
+        if (!user) {
+            return res.status(404).json({ message: "User not found" });
         }
 
-        const profile_to_update = await Profile.findOne({userId : userprofile._id});
+        const profile_to_update = await Profile.findOne({ userId: user._id });
 
-        Object.assign(profile_to_update, newprofileData);
+        if (!profile_to_update) {
+            return res.status(404).json({ message: "Profile not found" });
+        }
+
+        Object.assign(profile_to_update, newUserdata);
 
         await profile_to_update.save();
 
-        return res.json({message : "Profiel Updated"});
+        return res.json({ message: "Profile Updated" });
+
+    } catch (error) {
+        return res.status(500).json({ message: error.message });
+    }
+};
 
 
 
+export const getAllUserProfiles = async (req, res) => {
+
+    try{
+
+        const profiles = await Profile.find()
+            .populate('userId' , 'name email username profilePicture');
+
+            return res.json({profiles});
 
     } catch(error){
-
-         return res.status(500).json({ message : error.message})
+         return res.status(500).json({ message: error.message });
     }
+
 }
+
+
+
 
 
