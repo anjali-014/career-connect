@@ -1,6 +1,6 @@
 ### Register API
 # This request is used to create a new user account
-POST http://localhost:9080/register HTTP/1.1
+POST http://localhost:9090/register HTTP/1.1
 Content-Type: application/json
 
 {
@@ -13,12 +13,24 @@ Content-Type: application/json
 ### Login API
 # This request is used to authenticate user and return a token
 
-POST http://localhost:9080/login HTTP/1.1
+POST http://localhost:9090/login HTTP/1.1
 Content-Type: application/json
 
 {
     "email": "anjali2@gmail.com",
-     "password": "password123",
+     "password": "password123"
     
 } 
+
+
+### 
+
+GET http://localhost:9090/get_user_and_profile HTTP/1.1
+Content-Type: application/json
+
+{
+    "token" : "437e49b36a635a926e532f9fd2ca94c7224842f026f5c573c6ec527d12746515"
+    
+} 
+
 
