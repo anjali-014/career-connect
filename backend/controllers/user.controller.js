@@ -174,7 +174,7 @@ export const getUserAndProfile = async (req,res) => {
     }
 }
 
-
+// implement user profile data controller
 
 export const updateProfileData = async (req, res) => {
     
