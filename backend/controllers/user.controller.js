@@ -221,6 +221,22 @@ export const getAllUserProfiles = async (req, res) => {
 }
 
 
+export const downloadResume = async (req,res) => {
+
+    const user_id = req.query.id; 
+
+  
+    const userProfile = await Profile.findOne()
+            .populate('userId' , 'name email username profilePicture');
+
+    let a = await convertUserDataTOPDF(userProfile);
+
+    return res.json({"message" : a}); 
+        
+
+}
+
+
 
 
 
