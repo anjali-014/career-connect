@@ -203,7 +203,7 @@ export const updateProfileData = async (req, res) => {
     }
 };
 
-
+//implemented get all user profiles controller
 
 export const getAllUserProfiles = async (req, res) => {
 
