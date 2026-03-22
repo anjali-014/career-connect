@@ -126,7 +126,7 @@ export const updateUserProfile = async (req,res) => {
 
         const { username, email} = newUserdata;
 
-        const existingUser = await User.findOne({ $or: [(username), (email) ]});
+        const existingUser = await User.findOne({ $or: [{username}, {email} ]});
 
         if (existingUser) {
          if (existingUser || String(existingUser._id !== String(user._id))){
@@ -135,7 +135,7 @@ export const updateUserProfile = async (req,res) => {
          }
         }
 
-        Object.assign(user, newUserData);
+       Object.assign(user, newUserdata);
 
         await user.save();
 
@@ -163,7 +163,7 @@ export const getUserAndProfile = async (req,res) => {
         const userProfile = await Profile.findOne({ userId: user._id})
             .populate('userId' , 'name email username profilePicture');
 
-            return res.json(userprofile);
+            return res.json(userProfile);
 
 
 
@@ -173,3 +173,36 @@ export const getUserAndProfile = async (req,res) => {
          return res.status(500).json({ message : error.message})
     }
 }
+
+
+
+export const updateProfileData = async (req, res) => {
+    
+    try{
+
+        const { token, ...newUserdata } = req.body;
+
+        const userprofile = await User.findOne({ token : token });
+
+        if(!user){
+             return res.status(404).json({ message : "User not found"})
+        }
+
+        const profile_to_update = await Profile.findOne({userId : userprofile._id});
+
+        Object.assign(profile_to_update, newprofileData);
+
+        await profile_to_update.save();
+
+        return res.json({message : "Profiel Updated"});
+
+
+
+
+    } catch(error){
+
+         return res.status(500).json({ message : error.message})
+    }
+}
+
+
