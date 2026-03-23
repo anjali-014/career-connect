@@ -16,15 +16,16 @@ const convertUserDataTOPDF =async (userData) => {
     doc.pipe(stream);
 
     doc.image(`uploads/${userData.userId.profilePicture}`, {align: "center" , width: 100})
-    doc.fontSize(14).text(`Name: ${userData.userId.name}`); 
+    doc.fontSize(14).text(`Name: ${userData.userId.name}`);
+    doc.moveDown(); 
     doc.fontSize(14).text(`Username: ${userData.userId.username}`); 
     doc.fontSize(14).text(`Email: ${userData.userId.email}`); 
     doc.fontSize(14).text(`Bio: ${userData.userId.bio}`); 
     doc.fontSize(14).text(`Current Position: ${userData.userId.currentPosition}`); 
-    doc.fontSize(14).text(`Name: ${userData.userId.name}`); 
     doc.fontSize(14).text("Past Work : ")
+    doc.moveDown();
     userData.pastWork.forEach((work, index) => {
-        doc.fontSize(14).text(`Company Name: ${work.commpanyName}`);
+        doc.fontSize(14).text(`Company Name: ${work.companyName}`);
         doc.fontSize(14).text(`Position: ${work.position}`);
          doc.fontSize(14).text(`Years: ${work.years}`);
 
