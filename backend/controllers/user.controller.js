@@ -4,6 +4,37 @@ import crypto from "crypto";
 
 import bcrypt from "bcrypt";
 
+import PDFDocument from 'pdfkit';
+import fs from 'fs';
+
+const convertUserDataTOPDF =async (userData) => {
+    const doc = new PDFDocument();
+
+    const outputPath = crypto.randomBytes(32).toString("hex") + ".pdf";
+    const stream = fs.createWriteStream("uploads/" + outputPath);
+
+    doc.pipe(stream);
+
+    doc.image(`uploads/${userData.userId.profilePicture}`, {align: "center" , width: 100})
+    doc.fontSize(14).text(`Name: ${userData.userId.name}`); 
+    doc.fontSize(14).text(`Username: ${userData.userId.username}`); 
+    doc.fontSize(14).text(`Email: ${userData.userId.email}`); 
+    doc.fontSize(14).text(`Bio: ${userData.userId.bio}`); 
+    doc.fontSize(14).text(`Current Position: ${userData.userId.currentPosition}`); 
+    doc.fontSize(14).text(`Name: ${userData.userId.name}`); 
+    doc.fontSize(14).text("Past Work : ")
+    userData.pastWork.forEach((work, index) => {
+        doc.fontSize(14).text(`Company Name: ${work.commpanyName}`);
+        doc.fontSize(14).text(`Position: ${work.position}`);
+         doc.fontSize(14).text(`Years: ${work.years}`);
+
+    })
+
+    doc.end();
+    
+     return outputPath;
+}
+
 // Register controller: handles new user signup
 
 export const register = async (req, res) => {
@@ -221,7 +252,7 @@ export const getAllUserProfiles = async (req, res) => {
 }
 
 
-export const downloadResume = async (req,res) => {
+export const downloadProfile = async (req,res) => {
 
     const user_id = req.query.id; 
 
@@ -229,10 +260,11 @@ export const downloadResume = async (req,res) => {
     const userProfile = await Profile.findOne()
             .populate('userId' , 'name email username profilePicture');
 
-    let a = await convertUserDataTOPDF(userProfile);
+    let outputPath = await convertUserDataTOPDF(userProfile);
 
-    return res.json({"message" : a}); 
-        
+    return res.json({"message" : outputPath});
+
+
 
 }
 
