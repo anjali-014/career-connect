@@ -333,5 +333,34 @@ export const sendConnectionRequest = async (req,res) =>{
 
 
 
+export const getMyConnectionRequest = async (req,res) => {
+
+    const {token} = req.body;
+
+    try {
+
+        const user = await User.findOne({ token });
+
+        if (!user) {
+            return res.status(404).json({ message: "User not found" });
+        }
+
+        const connections = await ConnectionRequest.find({
+            connectionId: user._id
+        }).populate('userId', 'name username email profilePicture');
+
+        return res.json({ connections });
+
+    } catch(error){
+
+         return res.status(500).json({ message: error.message });
+    
+    }
+}
+
+
+
+
+
 
 
