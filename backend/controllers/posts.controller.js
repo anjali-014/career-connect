@@ -1,6 +1,7 @@
 import User from "../models/user.model.js";
 import Profile from "../models/profiles.model.js";
 
+
 import bcrypt from "bcrypt";
 
  export const activeCheck = async (req, res) => {
@@ -9,40 +10,32 @@ import bcrypt from "bcrypt";
 
 }
 
- export const register = async (req, res) => {
+ export const createPost = async (req,res) => {
+
+    const {token} = req.body;
+
     try{
-        const {name, email, password, username} = req.body;
-        if(!name || !email || !password || !username){
-            return res.status(400).json({message: "All fields are required"});
-        }
-            const user = await User.findOne({
-                email
-            });
-            if(user){
-                return res.status(400).json({message: "User already exists"});
-            }
+   
+        const user = await User.findOne({token});
+        
+              if (!user) {
+                    return res.status(404).json({ message: "User not found" });
+                }
 
-            const hashedPassword = await bcrypt.hash(password, 10);
-            const newUser = new User({
-                name,
-                email,
-                password,
-                username
-            });
-            await newUser.save();
-
-            const profile = new Profile({userId: newUser._id });
-
-            await profile.save();
-
-            return res.status(201).json({message: "User created successfully", user: newUser});
-
-    
+        const post = new Post({
+            userId : user._id,
+            body : req.body.body,
+            media: req.file ? req.file.filename : "",
+            fileType : req.file ? req.file.mimetype.split("/") : ""
+        })
 
 
+        await post.save();
+
+        return res.status(200).json({ message : "Post Created"});
+
+    }  catch(error) {
+
+         return res.status(500).json({ message: error.message });
     }
-
-    catch (error){
-        return res.status(500).json({message: error.message});
-    }
-}
+ } 
