@@ -7,6 +7,10 @@ import bcrypt from "bcrypt";
 import PDFDocument from 'pdfkit';
 import fs from 'fs';
 
+import ConnectionRequest from "../models/connection.model.js";
+
+
+
 const convertUserDataTOPDF =async (userData) => {
     const doc = new PDFDocument();
 
@@ -279,6 +283,52 @@ export const downloadProfile = async (req,res) => {
    return res.download(`uploads/${outputPath}`);
 
 
+}
+
+
+
+export const sendConnectionRequest = async (req,res) =>{
+
+    const {token , connectionId} = req.body;
+    
+    try{
+      const user = await User.findOne({token});
+
+      if (!user) {
+            return res.status(404).json({ message: "User not found" });
+        }
+
+      const connectionUser = await User.findOne({_id : connectionId});
+      
+       if (!connectionUser) {
+            return res.status(404).json({ message: "Connection User not found" });
+        }
+
+        const existingRequest = await ConnectionRequest.findOne(
+            {
+                userId : user._id,
+                connectionId : connectionUser._id
+            }
+        )
+
+        
+       if (existingRequest) {
+            return res.status(400).json({ message: "Request already sent" });
+        }
+
+        const request = new ConnectionRequest({
+            userId : user._id,
+            connectionId : connectionUser._id
+        });
+
+      await request.save();
+
+      return res.json({message : "Request sent"});
+
+
+    } catch(error){
+         return res.status(500).json({ message: error.message });
+    }
 }
 
 
