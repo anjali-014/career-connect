@@ -18,4 +18,11 @@ const upload = multer({storage: storage});
 
 router.route("/").get(activeCheck);
 
+
+router.route("/post").post(upload.single('media'),createPost);
+
+
+
+
+
 export default router;
