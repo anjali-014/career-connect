@@ -24,7 +24,7 @@ const convertUserDataTOPDF =async (userData) => {
     doc.fontSize(14).text(`Current Position: ${userData.userId.currentPosition}`); 
     doc.fontSize(14).text("Past Work : ")
     doc.moveDown();
-    userData.pastWork.forEach((work, index) => {
+    userData.pastwork.forEach((work, index) => {
         doc.fontSize(14).text(`Company Name: ${work.companyName}`);
         doc.fontSize(14).text(`Position: ${work.position}`);
          doc.fontSize(14).text(`Years: ${work.years}`);
@@ -33,7 +33,11 @@ const convertUserDataTOPDF =async (userData) => {
 
     doc.end();
     
-     return outputPath;
+     // 🔥 WAIT for file to finish writing
+    return new Promise((resolve, reject) => {
+        stream.on("finish", () => resolve(outputPath));
+        stream.on("error", reject);
+    });
 }
 
 // Register controller: handles new user signup
@@ -252,19 +256,18 @@ export const getAllUserProfiles = async (req, res) => {
 
 }
 
-
+//implement download profile controller....
 export const downloadProfile = async (req,res) => {
 
     const user_id = req.query.id; 
 
   
     const userProfile = await Profile.findOne()
-            .populate('userId' , 'name email username profilePicture');
+            .populate('userId' , 'name email username profilePicture bio currentPosition ');
 
     let outputPath = await convertUserDataTOPDF(userProfile);
 
-    return res.json({"message" : outputPath});
-
+   return res.download(`uploads/${outputPath}`);
 
 
 }
