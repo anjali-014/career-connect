@@ -29,10 +29,11 @@ app.use(express.json());
 
 // Register application routes
 
-app.use(postRoutes);
+app.use("/user", userRoutes);
 
-app.use(userRoutes);
+app.use("/posts", postRoutes);
 
+app.use("/uploads", express.static("uploads"));
 
 // Start server and connect to MongoDB
 const start = async () => {
