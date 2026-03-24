@@ -20,16 +20,25 @@ const convertUserDataTOPDF =async (userData) => {
     doc.moveDown(); 
     doc.fontSize(14).text(`Username: ${userData.userId.username}`); 
     doc.fontSize(14).text(`Email: ${userData.userId.email}`); 
-    doc.fontSize(14).text(`Bio: ${userData.userId.bio}`); 
-    doc.fontSize(14).text(`Current Position: ${userData.userId.currentPosition}`); 
+    doc.fontSize(14).text(`Bio: ${userData.bio}`); 
+    doc.fontSize(14).text(`Current Position: ${userData.currentPost}`); 
     doc.fontSize(14).text("Past Work : ")
     doc.moveDown();
     userData.pastwork.forEach((work, index) => {
-        doc.fontSize(14).text(`Company Name: ${work.companyName}`);
+        doc.fontSize(14).text(`Company Name: ${work.company}`);
         doc.fontSize(14).text(`Position: ${work.position}`);
          doc.fontSize(14).text(`Years: ${work.years}`);
 
     })
+    doc.moveDown();
+doc.text("Education:");
+
+(userData.education || []).forEach((edu) => {
+    doc.text(`School: ${edu.school}`);
+    doc.text(`Degree: ${edu.degree}`);
+    doc.text(`Field: ${edu.fieldOfStudy}`);
+    doc.moveDown();
+});
 
     doc.end();
     
@@ -262,7 +271,7 @@ export const downloadProfile = async (req,res) => {
     const user_id = req.query.id; 
 
   
-    const userProfile = await Profile.findOne()
+    const userProfile = await Profile.findOne({ userId: user_id })
             .populate('userId' , 'name email username profilePicture bio currentPosition ');
 
     let outputPath = await convertUserDataTOPDF(userProfile);
