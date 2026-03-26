@@ -65,7 +65,7 @@ export const getAllPosts = async (req,res) => {
 
 export const deletePost = async (req,res) => {
 
-    const {token, postId} = req.body;
+    const {token, post_id} = req.body;
 
     try{
 
@@ -96,3 +96,43 @@ export const deletePost = async (req,res) => {
          return res.status(500).json({ message: error.message });
     }
 }
+
+
+
+export const commentPost = async (req,res) => {
+
+    const {token, post_id, commentBody} = req.body;
+
+    try{
+
+        const user = await user.findOne({token : token})
+                    .select("_id");
+
+         if (!user) {
+            return res.status(404).json({ message: "User not found" });
+        }
+
+        const post = await Post.findOne({ _id : post_id });
+
+          if (!post) {
+            return res.status(404).json({ message: "Post not found" });
+        }
+
+       const comment = new comment({
+           userId : user._id,
+           postId : post_id,
+           comment : commentBody
+       }) 
+
+       await comment.save();
+
+        return res.status(500).json({message : error.message});
+
+
+    } catch (error) {
+         return res.status(500).json({ message: error.message });
+    }
+}
+
+
+
