@@ -105,7 +105,7 @@ export const commentPost = async (req,res) => {
 
     try{
 
-        const user = await user.findOne({token : token})
+        const user = await User.findOne({token : token})
                     .select("_id");
 
          if (!user) {
@@ -118,7 +118,7 @@ export const commentPost = async (req,res) => {
             return res.status(404).json({ message: "Post not found" });
         }
 
-       const comment = new comment({
+       const comment = new Comment({
            userId : user._id,
            postId : post_id,
            comment : commentBody
@@ -126,13 +126,38 @@ export const commentPost = async (req,res) => {
 
        await comment.save();
 
-        return res.status(500).json({message : error.message});
+        return res.status(201).json({ message: "Comment added", comment });
 
 
     } catch (error) {
          return res.status(500).json({ message: error.message });
     }
 }
+
+
+
+export const get_comments_by_post = async (req,res) => {
+
+    const { post_id } = req.body;
+
+    try{
+
+        const post = await Post.findOne({ _id : post_id });
+
+         if (!post ) {
+            return res.status(404).json({ message: "Post not found" });
+        }
+
+        return res.json({ comments: post.comments });
+
+
+    } catch (error) {
+         return res.status(500).json({ message: error.message });
+    }
+}
+
+
+
 
 
 
