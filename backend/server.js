@@ -31,7 +31,7 @@ app.use(express.json());
 
 app.use("/user", userRoutes);
 
-app.use("/posts", postRoutes);
+app.use("/post", postRoutes);
 
 app.use("/uploads", express.static("uploads"));
 

@@ -58,10 +58,10 @@ POST http://localhost:9090/user/update_profile_data HTTP/1.1
 Content-Type: application/json
 
 {
-    "token" : "360e553d2305701cd1ca62a12db67f1be21817e31b035d09698edd612edf0a61",
+    "token" : "3bd652920740b37df6f26463d6acf27ce7b7748d53b45cfdb6533278d5498317",
     "bio" : "Software Engineer",
     "currentPost" : "CTO",
-    "pastWork" : [
+    "pastwork" : [
         {
             "company": "Microsoft",
             "position": "CTO",
