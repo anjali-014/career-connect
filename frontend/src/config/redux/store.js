@@ -6,8 +6,10 @@
 //  * Register here -> reducer
 
 
-const store = configureStore({
-
+export const store = configureStore({
+    reducer : {
+        auth : authReducer
+    }
 })
 
 export default store;
