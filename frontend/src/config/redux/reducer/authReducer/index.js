@@ -1,5 +1,6 @@
 const { createSlice } = require("@reduxjs/toolkit");
-const { loginUser } = require("../action/authAction");
+import { loginUser, registerUser } from "../../action/authAction";
+
 
 
 const initialState = {
@@ -48,6 +49,27 @@ const authSlice = createSlice({
             state.isSuccess = false;
             state.loggedIn = false;
             state.message = action.payload.message || "Login failed. Please try again.";
+        })
+
+        .addCase(registerUser.pending, (state) => {
+            state.isLoading = true;
+            state.message = "Registering You...";
+        })
+
+        .addCase(registerUser.fulfilled, (state, action) => {
+            state.isLoading = false;
+            state.isSuccess = true;
+            state.loggedIn = true;
+            state.isError = false;
+            state.message = "Registration successful! Welcome to LinkedIn!";
+        })
+
+        .addCase(registerUser.rejected, (state, action) => {
+            state.isLoading = false;
+            state.isError = true;
+            state.isSuccess = false;
+            state.loggedIn = false;
+            state.message = action.payload.message || "Registration failed. Please try again.";
         })
 
     }
