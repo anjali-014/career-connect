@@ -1,4 +1,5 @@
  import { configureStore } from "@reduxjs/toolkit";
+ import authReducer from "./reducer/authReducer";
 //  STEPS FOR STATE MANAGEMENT...
 
 //  * Submit an action
