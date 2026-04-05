@@ -2,3 +2,21 @@
     font-family : "Poppins";
     padding: 1.2rem;
 }
+
+.mainContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-inline: 2rem;
+    gap: 4rem;
+    height: 80vh;
+}
+
+
+.mainContainer_left {
+    flex: 0.5;
+}
+
+.mainContainer_right {
+    flex: 0.5;
+}
