@@ -7,6 +7,8 @@ import { Geist, Geist_Mono } from "next/font/google";
 
 import { useRouter } from "next/router";
 import styles from "../styles/Home.module.css";
+import UserLayout from "../layout/UserLayout";
+
 
 
 //const inter = Inter({ subsets: ["latin"] });
@@ -18,7 +20,7 @@ export default function Home() {
 
   return (
     <>
-      
+      <UserLayout>
       <div className={styles.container}>
 
         <div className={styles.mainContainer}>
@@ -33,7 +35,7 @@ export default function Home() {
                 router.push("/login");
               }} 
               
-              className="buttonJoin">
+              className={styles.buttonJoin}>
 
                 <p> Join Now</p>
               </div>
@@ -41,11 +43,13 @@ export default function Home() {
            </div>
 
             <div className={styles.mainContainer_right}>
-                <img src = "images/homemain_connection.jpg" alt = "Main Connection Image"/>
+                <img src = "images/homemain_connection.jpg" style={{ width: '100%', height: 'auto' }} alt = "Main Connection Image"/>
             </div>
         </div>
 
       </div>
+
+      </UserLayout>
     </>
   );
 }
