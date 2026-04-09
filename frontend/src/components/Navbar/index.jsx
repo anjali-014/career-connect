@@ -1,6 +1,7 @@
 import React from 'react';
 import styles from "./styles.module.css";
 
+//navbar component for the application, it will be used in the layout component to be displayed on all pages of the application. It will contain the logo and the links to the different pages of the application. It will also contain a search bar and a user profile icon.
 function NavBarComponent() {
   return (
     <div className={styles.Container}>
@@ -8,7 +9,7 @@ function NavBarComponent() {
 
         <h2>Pro Connect</h2>
 
-        <div className>
+        <div className={styles.Navbar_links}>
 
 
         </div>
