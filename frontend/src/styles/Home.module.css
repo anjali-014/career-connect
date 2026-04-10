@@ -1,6 +1,7 @@
 .container {
     font-family : "Poppins";
     padding: 1.2rem;
+    margin: 0 auto ;
 }
 
 .mainContainer {
@@ -55,6 +56,7 @@
     font-size: 1.5rem;
     margin-top: 1rem;
     color: #4D4D4D;
+
 }
 
 
@@ -71,5 +73,6 @@
     cursor: pointer;
     user-select: none;
     transition: all 0.2s;
+
 
 }   
