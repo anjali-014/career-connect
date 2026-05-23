@@ -1,15 +1,14 @@
-//index.jsx
+import React from "react";
+import NavBarComponent from "@/components/Navbar";
 
-
-import React from 'react'
-
- function LoginComponent() {
+function Login() {
   return (
     <div>
-      <div>Login Component</div>
+      <NavBarComponent />
+
+      <h1>Login Component</h1>
     </div>
-  )
+  );
 }
 
-export default LoginComponent;
-
+export default Login;
