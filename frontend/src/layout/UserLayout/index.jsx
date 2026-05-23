@@ -7,7 +7,7 @@ import React from 'react'
     <div>
 
         <NavBarComponent/>
-      {children}
+        {children}
     </div>
   )
 }
