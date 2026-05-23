@@ -1,24 +1,35 @@
-import React from 'react';
+"use client";
+
+import React from "react";
 import styles from "./styles.module.css";
+import { useRouter } from "next/navigation";
 
-//navbar component for the application, it will be used in the layout component to be displayed on all pages of the application. It will contain the logo and the links to the different pages of the application. It will also contain a search bar and a user profile icon.
+// navbar component for the application
+
 function NavBarComponent() {
+
+  const router = useRouter();
+
   return (
-    <div className={styles.Container}>
-       <nav className={styles.Navbar}>
+    <div className={styles.container}>
+      <nav className={styles.navbar}>
+        <h2 onClick={() => router.push("/")}>
+          Pro Connect
+        </h2>
 
-        <h2>Pro Connect</h2>
-
-        <div className={styles.Navbar_links}>
-
-
+        <div className={styles.navbarOptionsContainer}>
+          <div
+            onClick={() => {
+              router.push("/login");
+            }}
+            className={styles.buttonJoin}
+          >
+            <p>Be a part</p>
+          </div>
         </div>
-
-       
-       </nav>
-      
+      </nav>
     </div>
-  )
+  );
 }
 
 export default NavBarComponent;
