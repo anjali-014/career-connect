@@ -78,3 +78,9 @@
 
 
 }   
+
+.mainContainer_left > div.buttonJoin:hover {
+    background-color: #005582;
+    transform: translateY(-2px);
+}
+
