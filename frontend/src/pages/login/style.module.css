@@ -28,17 +28,26 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-    gap: 20px;
+    /* justify-content: center; */
+    /* gap: 20px; */
 }
+
+.cardLeft_heading{
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #924141;
+}
+
 
 .cardContainer_right{
     flex: 0.4;
     justify-content: center;
     display: flex;
     /* align-items: center; */
-    background-color: #d4141498;
+    background-color: #924141d8;
     background-image: url("/loginImage.jpg");
     background-size: cover;
     background-position: center;    
 }
+
+
