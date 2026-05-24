@@ -1,9 +1,8 @@
 import React , { useEffect } from "react";
 import { useSelector } from "react-redux";
 import UserLayout from "@/layout/UserLayout";
-import NavBarComponent from "@/components/Navbar";
 import { useRouter } from "next/router";
-import styles from "/style.module.css";
+import styles from "./style.module.css";
 
 function Login() {
 
@@ -11,7 +10,7 @@ function Login() {
 
   const router = useRouter();
 
-  const isLoginMethod = authState(false);
+  const isLoginMethod = authState.isLoginMethod;
 
   useEffect(() => {
     if (authState.loggedIn) {
@@ -22,7 +21,10 @@ function Login() {
   return (
 
     <UserLayout>
-      <div className={styles.cardContainer}>
+     <div className={styles.container}>
+
+       <div className={styles.cardContainer}>
+
         <div className={styles.cardContainer_left}>
 
           <p> { isLoginMethod ? "Sign In" : "Sign Up" }</p>
@@ -39,15 +41,11 @@ function Login() {
 
       </div>
 
+     </div>
     </UserLayout>
 
     
-    {/* // <div>
-    //   <NavBarComponent />
-
-    //   <h1>Login Component</h1>
-    // </div> */}
-  );
+  )
 }
 
 export default Login;
