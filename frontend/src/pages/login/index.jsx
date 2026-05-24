@@ -31,7 +31,21 @@ function Login() {
 
           <p className={styles.cardLeft_heading}> { userLoginMethod ? "Sign In" : "Sign Up" }</p>
 
+          <div className={styles.inputContainers}>
 
+            <div className={styles.inputRow}>
+
+ 
+          <input type="text" placeholder="Username" className={styles.inputField} />
+           <input type="text" placeholder="Name" className={styles.inputField} />
+
+            </div>
+
+             <input type="password" placeholder="Password" className={styles.inputField} />
+
+              <input type="email" placeholder="Email" className={styles.inputField} />
+
+          </div>
 
         </div>
 
