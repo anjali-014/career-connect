@@ -3,6 +3,8 @@ import { useSelector } from "react-redux";
 import UserLayout from "@/layout/UserLayout";
 import { useRouter } from "next/router";
 import styles from "./style.module.css";
+import { useState } from "react";
+
 
 function Login() {
 
@@ -10,7 +12,7 @@ function Login() {
 
   const router = useRouter();
 
-  const isLoginMethod = authState.isLoginMethod;
+  const [userLoginMethod, setUserloginMethod] = useState(true);
 
   useEffect(() => {
     if (authState.loggedIn) {
@@ -27,7 +29,7 @@ function Login() {
 
         <div className={styles.cardContainer_left}>
 
-          <p> { isLoginMethod ? "Sign In" : "Sign Up" }</p>
+          <p className={styles.cardLeft_heading}> { userLoginMethod ? "Sign In" : "Sign Up" }</p>
 
 
 
