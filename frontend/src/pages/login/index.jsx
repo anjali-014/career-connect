@@ -12,7 +12,7 @@ function Login() {
 
   const router = useRouter();
 
-  const [userLoginMethod, setUserloginMethod] = useState(true);
+  const [userLoginMethod, setUserloginMethod] = useState(false);
 
   useEffect(() => {
     if (authState.loggedIn) {
@@ -44,6 +44,10 @@ function Login() {
              <input type="password" placeholder="Password" className={styles.inputField} />
 
               <input type="email" placeholder="Email" className={styles.inputField} />
+
+              <div className={styles.buttonWithOutline}>
+                <p>{ userLoginMethod ? "Sign In" : "Sign Up" }</p>
+              </div>
 
           </div>
 
