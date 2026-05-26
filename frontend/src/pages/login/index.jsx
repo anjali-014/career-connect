@@ -30,7 +30,7 @@ function Login() {
 
   const handleRegister = () => {
      console.log("Registering user...");
-     dispatch(loginUser({}));
+     dispatch(registerUser({ name, email, password, username }));
   }
 
   return (
@@ -46,20 +46,20 @@ function Login() {
 
           <div className={styles.inputContainers}>
 
-            <div className={styles.inputRow}>
+            <div  className={styles.inputRow}>
 
  
-          <input type="text" placeholder="Username" className={styles.inputField} />
-           <input type="text" placeholder="Name" className={styles.inputField} />
+          <input onChange={(e) => setUsername(e.target.value)} type="text" placeholder="Username" className={styles.inputField} />
+           <input onChange={(e) => setName(e.target.value)} type="text" placeholder="Name" className={styles.inputField} />
 
             </div>
 
-             <input type="password" placeholder="Password" className={styles.inputField} />
+             <input onChange={(e) => setPassword(e.target.value)} type="password" placeholder="Password" className={styles.inputField} />
 
-              <input type="email" placeholder="Email" className={styles.inputField} />
+              <input onChange={(e) => setEmailAddress(e.target.value)} type="email" placeholder="Email" className={styles.inputField} />
 
               <div onClick={() => {
-                if(userLoginMethod) {
+                if(userLoginMethod) { 
                   // Handle sign in logic
                 } else {
                   // Handle sign up logic
