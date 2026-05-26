@@ -4,6 +4,7 @@ import UserLayout from "@/layout/UserLayout";
 import { useRouter } from "next/router";
 import styles from "./style.module.css";
 import { useState } from "react";
+import { useDispatch } from "react-redux";
 
 
 function Login() {
@@ -12,13 +13,25 @@ function Login() {
 
   const router = useRouter();
 
+  const dispatch = useDispatch();
+
   const [userLoginMethod, setUserloginMethod] = useState(false);
+
+  // const [email, setEmailAddress] = useState("");
+  // const [password, setPassword] = useState("");
+  // const [username, setUsername] = useState("");
+  // const [name, setName] = useState("");
 
   useEffect(() => {
     if (authState.loggedIn) {
       router.push("/dashboard");
     }
   }, [authState.loggedIn, router]);
+
+  // const handleRegister = () => {
+  //    console.log("Registering user...");
+  //    dispatch(loginUser({}));
+  // }
 
   return (
 
@@ -45,7 +58,15 @@ function Login() {
 
               <input type="email" placeholder="Email" className={styles.inputField} />
 
-              <div className={styles.buttonWithOutline}>
+              <div onClick={() => {
+                if(userLoginMethod) {
+                  // Handle sign in logic
+                } else {
+                  // Handle sign up logic
+                  handleRegister();
+                }
+              }}
+                  className={styles.buttonWithOutline}>
                 <p>{ userLoginMethod ? "Sign In" : "Sign Up" }</p>
               </div>
 
