@@ -28,10 +28,10 @@ function Login() {
     }
   }, [authState.loggedIn, router]);
 
-  // const handleRegister = () => {
-  //    console.log("Registering user...");
-  //    dispatch(loginUser({}));
-  // }
+  const handleRegister = () => {
+     console.log("Registering user...");
+     dispatch(loginUser({}));
+  }
 
   return (
 
