@@ -17,10 +17,10 @@ function Login() {
 
   const [userLoginMethod, setUserloginMethod] = useState(false);
 
-  // const [email, setEmailAddress] = useState("");
-  // const [password, setPassword] = useState("");
-  // const [username, setUsername] = useState("");
-  // const [name, setName] = useState("");
+  const [email, setEmailAddress] = useState("");
+  const [password, setPassword] = useState("");
+  const [username, setUsername] = useState("");
+  const [name, setName] = useState("");
 
   useEffect(() => {
     if (authState.loggedIn) {
