@@ -5,6 +5,7 @@ import { useRouter } from "next/router";
 import styles from "./style.module.css";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
+import { registerUser } from "@/config/redux/action/authAction";
 
 
 function Login() {
@@ -36,6 +37,7 @@ function Login() {
   return (
 
     <UserLayout>
+
      <div className={styles.container}>
 
        <div className={styles.cardContainer}>
@@ -43,6 +45,14 @@ function Login() {
         <div className={styles.cardContainer_left}>
 
           <p className={styles.cardLeft_heading}> { userLoginMethod ? "Sign In" : "Sign Up" }</p>
+
+             <p className={styles.cardLeft_heading}>
+                  {userLoginMethod ? "Sign In" : "Sign Up"}
+                </p>
+
+                <p className={styles.authMessage}>
+                  {authState.message}
+                </p>
 
           <div className={styles.inputContainers}>
 
