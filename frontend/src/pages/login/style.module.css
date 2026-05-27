@@ -35,7 +35,7 @@
 .cardLeft_heading{
     font-size: 1.5rem;
     font-weight: bold;
-    color: #924141;
+    color: black;
     margin-bottom: 1rem;
 }
 
@@ -94,12 +94,3 @@
     justify-content: center;
 }
 
-.authMessage{
-    color: #7c2d2d;
-    font-size: 0.95rem;
-    font-weight: 500;
-    margin-top: -10px;
-    margin-bottom: 1rem;
-    text-align: center;
-    min-height: 20px;
-}
