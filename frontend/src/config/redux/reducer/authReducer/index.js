@@ -12,7 +12,7 @@ const initialState = {
     message : "",
     profileFetched : false,
     connections : [],
-    connetionRequests : [],
+    connectionRequests : [],
 }
 
 
@@ -48,7 +48,8 @@ const authSlice = createSlice({
             state.isError = true;
             state.isSuccess = false;
             state.loggedIn = false;
-            state.message = action.payload.message || "Login failed. Please try again.";
+            state.message =
+              action.payload?.message || "Login failed. Please try again.";
         })
 
         .addCase(registerUser.pending, (state) => {
@@ -69,7 +70,7 @@ const authSlice = createSlice({
             state.isError = true;
             state.isSuccess = false;
             state.loggedIn = false;
-            state.message = action.payload.message || "Registration failed. Please try again.";
+            state.message = action.payload?.message || "Registration failed. Please try again.";
         })
 
     }
