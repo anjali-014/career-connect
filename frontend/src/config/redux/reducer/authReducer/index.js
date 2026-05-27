@@ -60,7 +60,7 @@ const authSlice = createSlice({
         .addCase(registerUser.fulfilled, (state, action) => {
             state.isLoading = false;
             state.isSuccess = true;
-            state.loggedIn = true;
+            state.loggedIn = false; //temporary
             state.isError = false;
             state.message = "Registration successful! Welcome to LinkedIn!";
         })
