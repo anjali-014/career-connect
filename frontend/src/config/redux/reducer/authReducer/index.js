@@ -1,6 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { loginUser, registerUser } from "../../action/authAction";
 
+
 const initialState = {
   user: [],
   isError: false,
@@ -21,7 +22,10 @@ const authSlice = createSlice({
     handleLoginUser: (state) => {
       state.message = "hello";
     },
+    emptyMessage: (state) => {
+        state.message = "";
   },
+    },
   extraReducers: (builder) => {
     builder
 
@@ -75,6 +79,7 @@ const authSlice = createSlice({
   },
 });
 
-export const { reset, handleLoginUser } = authSlice.actions;
+export const { reset, emptyMessage, handleLoginUser } = authSlice.actions;
+
 export default authSlice.reducer;
 
