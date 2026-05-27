@@ -4,6 +4,7 @@ import UserLayout from "@/layout/UserLayout";
 import { useRouter } from "next/router";
 import styles from "./style.module.css";
 import { registerUser, loginUser } from "@/config/redux/action/authAction";
+import { emptyMessage } from "@/config/redux/reducer/authReducer/index";
 
 function Login() {
   const authState = useSelector((state) => state.auth);
@@ -24,7 +25,10 @@ function Login() {
     }
   }, [authState.loggedIn, router]);
 
-  
+  useEffect(() => {
+    dispatch(emptyMessage())
+  }, [userLoginMethod]);
+
 
   const handleRegister = () => {
     console.log("Registering user...");
