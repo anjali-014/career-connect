@@ -13,7 +13,7 @@
     display: flex;
     border-radius: 10px;
     overflow: hidden;
-    width: 80%;
+    width: 60%;
     box-shadow: 10px 10px 15px rgba(173,173,173, 0.1);
     /* flex-direction: row; */
     background-color: white;
@@ -42,13 +42,16 @@
 
 .cardContainer_right{
     flex: 0.4;
+    color: white;
     justify-content: center;
     display: flex;
     /* align-items: center; */
-    background-color: #924141d8;
+    background-color: #273a63d8;
     background-image: url("/loginImage.jpg");
     background-size: cover;
-    background-position: center;    
+    background-position: center;
+    justify-content: center;
+    align-items: center;    
 }
 
 
@@ -58,7 +61,7 @@
     align-items: center;
     justify-content: center;
     width: 100%;
-    margin-top: 2rem;
+    /* margin-top: 2rem; */
     padding: 0.5rem;
 }
 
