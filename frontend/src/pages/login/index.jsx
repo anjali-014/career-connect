@@ -46,13 +46,10 @@ function Login() {
 
           <p className={styles.cardLeft_heading}> { userLoginMethod ? "Sign In" : "Sign Up" }</p>
 
-             <p className={styles.cardLeft_heading}>
-                  {userLoginMethod ? "Sign In" : "Sign Up"}
-                </p>
 
-                <p className={styles.authMessage}>
-                  {authState.message}
-                </p>
+             <p style={{ color: authState.isError ? "red" : "green" }}>
+                {authState.message?.message || authState.message}
+              </p>
 
           <div className={styles.inputContainers}>
 
