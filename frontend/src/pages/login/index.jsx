@@ -26,6 +26,12 @@ function Login() {
   }, [authState.loggedIn, router]);
 
   useEffect(() => {
+    if (localStorage.getItem("token")) {
+      router.push("/dashboard");
+    }
+  }, []);
+
+  useEffect(() => {
     dispatch(emptyMessage())
   }, [userLoginMethod]);
 
