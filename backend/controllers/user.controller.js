@@ -383,6 +383,7 @@ export const whatAreMyConnections = async (req,res) => {
     }
 }
 
+// accept connection request controller: accepts or rejects a connection request based on user action
 
 export const acceptConnectionRequest = async (req,res) => {
     const {token, requestId, action_type } = req.body;
