@@ -6,6 +6,10 @@ import styles from "./style.module.css";
 import { registerUser, loginUser } from "@/config/redux/action/authAction";
 import { emptyMessage } from "@/config/redux/reducer/authReducer/index";
 
+
+// login function
+
+
 function Login() {
   const authState = useSelector((state) => state.auth);
   const router = useRouter();
