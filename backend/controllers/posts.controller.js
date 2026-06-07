@@ -97,7 +97,7 @@ export const deletePost = async (req,res) => {
     }
 }
 
-
+// common post controller
 
 export const commentPost = async (req,res) => {
 
