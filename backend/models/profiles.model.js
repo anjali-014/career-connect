@@ -17,6 +17,8 @@ const educationSchema = new mongoose.Schema({
     }
 });
 
+// work Schema
+
 const workSchema = new mongoose.Schema({
     company: {
         type: String,
