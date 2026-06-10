@@ -8,6 +8,7 @@ import {commentPost} from "../controllers/posts.controller.js";
 import {get_comments_by_post} from "../controllers/posts.controller.js";
 import {delete_comment_of_user} from "../controllers/posts.controller.js";
 
+// routes for posts
 
 const router = Router();
 
