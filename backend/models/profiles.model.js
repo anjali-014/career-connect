@@ -1,5 +1,7 @@
 import mongoose from "mongoose";
 
+// profiles model for linkedin clone
+
 const educationSchema = new mongoose.Schema({
     school: {
         type: String,
