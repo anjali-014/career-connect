@@ -61,7 +61,7 @@ export const getAllPosts = async (req,res) => {
     }
 }
 
-
+// delete Post Controller
 
 export const deletePost = async (req,res) => {
 
