@@ -8,6 +8,9 @@ import {updateProfileData} from "../controllers/user.controller.js";
 import {downloadProfile}  from "../controllers/user.controller.js";
 // import {getAllUserProfiles}  from "../controllers/user.controller.js";
 
+// user routes
+
+
 const router = Router();
 
 const storage = multer.diskStorage({
