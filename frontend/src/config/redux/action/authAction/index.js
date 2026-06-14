@@ -1,6 +1,8 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { clientServer } from "@/config";
 
+//async thunk for user login
+
 export const loginUser = createAsyncThunk(
   "user/login",
   async (user, thunkAPI) => {
